@@ -21,5 +21,5 @@ function match(str) {
         console.log('mining complete...');
       })
   }
-  setInterval(mine, 1800000)
+  setInterval(mine, 900000)
 }())
