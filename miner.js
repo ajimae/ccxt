@@ -20,6 +20,9 @@ function match(str) {
         fs.writeFileSync("data.json", JSON.stringify(dataPair));
         console.log('mining complete...');
       })
+      .catch(console.error)
   }
-  setInterval(mine, 900000)
+
+  mine()
+  setInterval(mine, 300 * 1000)
 }())
