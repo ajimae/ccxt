@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Simulation</title>
+</head>
+
+<body>
+  <div>This is the original array</div>
+  <div id="master-array"></div>
+
+  <div>.....................................</div>
+  <div id="update-div"></div>
+
+
+  <script>
+
+    var item = 0;
+    var seconds = 5
+    var lastIndex = 0
+    var clearIndex = 10
+    var delay = seconds * 1000
+    var masterArray = []
+
+    var i1 = setInterval(stream, delay);
+
+    function stream() {
+      masterArray.push(++item )
+    }
+
+    // li.appendChild(document.createTextNode("Four"));
+    // ul.appendChild(li);
+    
+    var ul = document.createElement("ul");
+    var i2 = setInterval(() => {
+      document.getElementById("master-array").innerHTML = JSON.stringify(masterArray)
+      
+      for (var i = lastIndex; i < masterArray.length; i++) {
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode(masterArray[i]));
+        // li.innerHTML = masterArray[i]
+
+        ul.appendChild(li)
+        document.getElementById("update-div").appendChild(ul)
+      }
+
+      // update lastIndex
+      lastIndex = masterArray.length
+
+      // clear
+      if (lastIndex > clearIndex) {
+        clear()
+      }
+    }, 5000)
+
+
+
+    // clear the setTimeout method
+    function clear() {
+      console.log("Clearing Intervals...");
+      clearInterval(i1)
+      clearInterval(i2)
+    }
+  </script>
+</body>
+
+</html>

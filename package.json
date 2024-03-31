@@ -13,6 +13,8 @@
   },
   "scripts": {
     "start": "concurrently \"node miner\" \"node index\"",
-    "stop": "process.exit()"
+    "stop": "process.exit()",
+    "scale:0": "heroku ps:scale web=0 --app stackcoins",
+    "scale:1": "heroku ps:scale web=1 --app stackcoins"
   }
 }
